@@ -41,6 +41,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
             </plugin>
+            <!-- To run the program from the terminal -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.yoni.hellojava.Main</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

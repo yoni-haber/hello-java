@@ -4,19 +4,27 @@ import java.util.Scanner;
 
 public class FizzBuzz {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Please provide a number: ");
-        int number = scanner.nextInt();
+  private static final int FIZZ = 3;
+  private static final int BUZZ = 5;
 
-        if (number % 3 == 0 && number % 5 == 0) {
-            System.out.println("FizzBuzz");
-        } else if (number % 3 == 0) {
-            System.out.println("Fizz");
-        } else if (number % 5 == 0) {
-            System.out.println("Buzz");
-        } else {
-            System.out.println(number);
-        }
+  /**
+   * Main method to run the FizzBuzz program.
+   *
+   * @param args Command line arguments
+   */
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Please provide a number: ");
+    int number = scanner.nextInt();
+
+    if (number % FIZZ == 0 && number % BUZZ == 0) {
+      System.out.println("FizzBuzz");
+    } else if (number % FIZZ == 0) {
+      System.out.println("Fizz");
+    } else if (number % BUZZ == 0) {
+      System.out.println("Buzz");
+    } else {
+      System.out.println(number);
     }
+  }
 }

@@ -4,29 +4,41 @@ import java.util.Scanner;
 
 public class Main {
 
-  /**
-   * Main method to run the program.
-   *
-   * @param args Command line arguments
-   */
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Hello! Which program would you like to run?");
-    System.out.println("1. FizzBuzz");
-    System.out.println("2. Mortgage Calculator");
-    System.out.print("Please enter the number of the program you want to run: ");
-    int choice = scanner.nextInt();
-    switch (choice) {
-      case 1:
-        System.out.println("Running FizzBuzz...");
-        FizzBuzz.run(scanner);
-        break;
-      case 2:
-        System.out.println("Running Mortgage Calculator...");
-        MortgageCalculator.run(scanner);
-        break;
-      default:
-        System.out.println("Invalid choice. Please enter 1 or 2.");
+    try (Scanner scanner = new Scanner(System.in)) {
+      while (true) {
+        System.out.println("Hello! Which program would you like to run?");
+        System.out.println("1. FizzBuzz");
+        System.out.println("2. Mortgage Calculator");
+        System.out.println("3. Bank Account Manager");
+        System.out.print("Please enter the number of the program you want to run: ");
+
+        if (!scanner.hasNextInt()) {
+          System.out.println("Invalid input. Please enter a number.");
+          scanner.nextLine(); // clear invalid input
+          continue;
+        }
+
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+
+        switch (choice) {
+          case 1:
+            System.out.println("Running FizzBuzz...");
+            FizzBuzz.run(scanner);
+            return;
+          case 2:
+            System.out.println("Running Mortgage Calculator...");
+            MortgageCalculator.run(scanner);
+            return;
+          case 3:
+            System.out.println("Running Bank Account Manager...");
+            BankAccountManager.run(scanner);
+            return;
+          default:
+            System.out.println("Invalid choice. Please enter 1, 2 or 3.");
+        }
+      }
     }
   }
 }

@@ -62,7 +62,7 @@ public class MortgageCalculator {
     return value;
   }
 
-  public static double calculateMonthlyPayment(
+  private static double calculateMonthlyPayment(
       int principal, double annualInterestRate, int termYears) {
     double monthlyInterestRate = annualInterestRate / PERCENT / MONTHS_IN_YEAR;
     int numberOfPayments = termYears * MONTHS_IN_YEAR;

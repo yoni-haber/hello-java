@@ -10,6 +10,7 @@ public class MortgageCalculator {
     private static final int PERCENT = 100;
 
     public static void main(String[] args) {
+        System.out.println("Welcome to the Mortgage Calculator!");
         try (Scanner scanner = new Scanner(System.in)) {
             int principal = readValidInt(scanner, "Enter principal amount: ");
             double interestRate = readValidDouble(scanner);

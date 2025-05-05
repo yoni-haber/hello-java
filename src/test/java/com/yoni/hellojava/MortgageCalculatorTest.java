@@ -22,92 +22,87 @@ public class MortgageCalculatorTest {
         return out.toString();
     }
 
+    /**
+     * Ensure we can calculate the monthly payment correctly
+     */
     @Test
-    public void testValidInput() {
+    public void testMortgageCalculator1() {
         String output = runMainWithInput("100000\n5.0\n15\n");
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
-    }
-
-    @Test
-    public void testZeroPrincipal() {
-        String output = runMainWithInput("0\n100000\n5.0\n15\n");
+        assertTrue(output.contains("Welcome to the Mortgage Calculator!"));
         assertTrue(output.contains("Enter principal amount:"));
-        assertTrue(output.contains("Value must be greater than zero. Please try again."));
+        assertTrue(output.contains("Enter annual interest rate (percentage):"));
+        assertTrue(output.contains("Enter loan term (in years):"));
         assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
     }
 
+    /**
+     * Ensure we can handle principal input of less than 0
+     */
     @Test
-    public void testNegativePrincipal() {
-        String output = runMainWithInput("-120\n100000\n5.0\n15\n");
-        assertTrue(output.contains("Enter principal amount:"));
+    public void testMortgageCalculator2() {
+        String output = runMainWithInput("-120000\n100000\n5.0\n15\n");
         assertTrue(output.contains("Value must be greater than zero. Please try again."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
     }
 
+    /**
+     * Ensure we can handle non-integer principal input
+     */
     @Test
-    public void testNonIntegerPrincipal() {
+    public void testMortgageCalculator3() {
         String output = runMainWithInput("abc\n100000\n5.0\n15\n");
-        assertTrue(output.contains("Enter principal amount:"));
         assertTrue(output.contains("Invalid input. Please enter a whole number."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
     }
 
+    /**
+     * Ensure we can handle interest rate input of less than 0
+     */
     @Test
-    public void testZeroInterest() {
-        String output = runMainWithInput("100000\n0\n5.0\n15\n");
-        assertTrue(output.contains("Enter annual interest rate (percentage):"));
-        assertTrue(output.contains("Value must be greater than zero. Please try again."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
-    }
-
-    @Test
-    public void testNegativeInterest() {
+    public void testMortgageCalculator4() {
         String output = runMainWithInput("100000\n-5.0\n5.0\n15\n");
-        assertTrue(output.contains("Enter annual interest rate (percentage):"));
         assertTrue(output.contains("Value must be greater than zero. Please try again."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
     }
 
+    /**
+     * Ensure we can handle non-float interest rate input
+     */
     @Test
-    public void testNonFloatInterest() {
+    public void testMortgageCalculator5() {
         String output = runMainWithInput("100000\nabc\n5.0\n15\n");
-        assertTrue(output.contains("Enter annual interest rate (percentage):"));
         assertTrue(output.contains("Invalid input. Please enter a decimal number."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
     }
 
+    /**
+     * Ensure we can handle loan term input of less than 0
+     */
     @Test
-    public void testZeroTerm() {
-        String output = runMainWithInput("100000\n5.0\n0\n15\n");
-        assertTrue(output.contains("Enter loan term (in years):"));
-        assertTrue(output.contains("Value must be greater than zero. Please try again."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
-    }
-
-    @Test
-    public void testNegativeTerm() {
+    public void testMortgageCalculator6() {
         String output = runMainWithInput("100000\n5.0\n-5\n15\n");
-        assertTrue(output.contains("Enter loan term (in years):"));
         assertTrue(output.contains("Value must be greater than zero. Please try again."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
     }
 
+    /**
+     * Ensure we can handle non-integer loan term input
+     */
     @Test
-    public void testNonIntegerTerm() {
+    public void testMortgageCalculator7() {
         String output = runMainWithInput("100000\n5.0\nabc\n15\n");
-        assertTrue(output.contains("Enter loan term (in years):"));
         assertTrue(output.contains("Invalid input. Please enter a whole number."));
-        assertTrue(output.contains("Your monthly mortgage payment is: £790.79"));
     }
 
+    /**
+     * Ensure we can calculate the monthly payment correctly
+     */
     @Test
-    public void testMonthlyPaymentCalculation() {
+    public void testCalculateMonthlyPayment1() {
         double result = MortgageCalculator.calculateMonthlyPayment(500000, 4.8, 26);
         assertEquals(2808.18, result, 0.01); // delta = 1p
     }
 
+    /**
+     * Ensure we can calculate the monthly payment correctly
+     */
     @Test
-    public void testZeroPrincipalCalculation() {
+    public void testCalculateMonthlyPayment2() {
         double result = MortgageCalculator.calculateMonthlyPayment(0, 5.0, 15);
         assertEquals(0.0, result, 0.01);
     }

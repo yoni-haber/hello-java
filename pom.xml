@@ -8,9 +8,21 @@
     <artifactId>hello-java</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Common Maven Commands:
+      1. mvn clean                - Deletes previous build files.
+      2. mvn compile              - Compiles the source code.
+      3. mvn test                 - Runs the tests.
+      4. mvn package              - Packages the compiled code into a .jar file.
+      5. mvn install              - Installs the package into the local repository.
+      6. mvn exec:java            - Runs the main class specified in the exec-maven-plugin.
+      7. mvn checkstyle:check     - Runs Checkstyle for static code analysis.
+      8. mvn spotless:apply       - Formats the code using Spotless.
+      9. mvn dependency:tree      - Displays the dependency tree.
+     10. mvn site                 - Generates a project site.
+    -->
+
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

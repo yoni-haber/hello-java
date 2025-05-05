@@ -7,25 +7,22 @@ import java.util.Scanner;
 public class MortgageCalculator {
 
   private static final int MONTHS_IN_YEAR = 12;
-
   private static final int PERCENT = 100;
 
-  /**
-   * Main method to run the mortgage calculator.
-   *
-   * @param args Command line arguments
-   */
-  public static void main(String[] args) {
+  public static void run(Scanner scanner) {
     System.out.println("Welcome to the Mortgage Calculator!");
-    try (Scanner scanner = new Scanner(System.in)) {
-      int principal = readValidInt(scanner, "Enter principal amount: ");
-      double interestRate = readValidDouble(scanner);
-      int term = readValidInt(scanner, "Enter loan term (in years): ");
+    int principal = readValidInt(scanner, "Enter principal amount: ");
+    double interestRate = readValidDouble(scanner);
+    int term = readValidInt(scanner, "Enter loan term (in years): ");
 
-      double payment = calculateMonthlyPayment(principal, interestRate, term);
-      System.out.println(
-          "Your monthly mortgage payment is: "
-              + NumberFormat.getCurrencyInstance().format(payment));
+    double payment = calculateMonthlyPayment(principal, interestRate, term);
+    System.out.println(
+        "Your monthly mortgage payment is: " + NumberFormat.getCurrencyInstance().format(payment));
+  }
+
+  public static void main(String[] args) {
+    try (Scanner scanner = new Scanner(System.in)) {
+      run(scanner);
     }
   }
 
@@ -65,14 +62,6 @@ public class MortgageCalculator {
     return value;
   }
 
-  /**
-   * Calculates the monthly payment for a mortgage.
-   *
-   * @param principal The loan amount
-   * @param annualInterestRate Annual interest rate in percentage
-   * @param termYears The loan term in years
-   * @return Monthly payment
-   */
   public static double calculateMonthlyPayment(
       int principal, double annualInterestRate, int termYears) {
     double monthlyInterestRate = annualInterestRate / PERCENT / MONTHS_IN_YEAR;

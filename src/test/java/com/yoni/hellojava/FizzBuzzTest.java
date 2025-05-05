@@ -48,4 +48,12 @@ public class FizzBuzzTest {
     String output = runMainWithInput("14\n");
     assertTrue(output.contains("14"));
   }
+
+  /** Ensure the user is prompted as expected */
+  @Test
+  public void testFizzBuzz5() {
+    String output = runMainWithInput("0\n");
+    assertTrue(output.contains("Welcome to FizzBuzz!"));
+    assertTrue(output.contains("Please provide a number:"));
+  }
 }

@@ -3,17 +3,11 @@ package com.yoni.hellojava;
 import java.util.Scanner;
 
 public class FizzBuzz {
-
   private static final int FIZZ = 3;
   private static final int BUZZ = 5;
 
-  /**
-   * Main method to run the FizzBuzz program.
-   *
-   * @param args Command line arguments
-   */
-  public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
+  public static void run(Scanner scanner) {
+    System.out.println("Welcome to FizzBuzz!");
     System.out.print("Please provide a number: ");
     int number = scanner.nextInt();
 
@@ -26,5 +20,9 @@ public class FizzBuzz {
     } else {
       System.out.println(number);
     }
+  }
+
+  public static void main(String[] args) {
+    run(new Scanner(System.in));
   }
 }

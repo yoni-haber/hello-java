@@ -37,6 +37,7 @@ public class MainTest {
     assertTrue(output.contains("1. FizzBuzz"));
     assertTrue(output.contains("2. Mortgage Calculator"));
     assertTrue(output.contains("3. Bank Account Manager"));
+    assertTrue(output.contains("4. To Do List"));
     assertTrue(output.contains("Please enter the number of the program you want to run:"));
   }
 
@@ -68,7 +69,7 @@ public class MainTest {
   @Test
   public void testMain5() {
     String output = runWithInput("9\n1\n5\n");
-    assertTrue(output.contains("Invalid choice. Please enter 1, 2 or 3."));
+    assertTrue(output.contains("Invalid choice. Please enter 1, 2, 3 or 4."));
     assertTrue(output.contains("Running FizzBuzz..."));
     assertTrue(output.contains("Welcome to FizzBuzz!"));
   }
@@ -80,5 +81,13 @@ public class MainTest {
     assertTrue(output.contains("Invalid input. Please enter a number."));
     assertTrue(output.contains("Running FizzBuzz..."));
     assertTrue(output.contains("Welcome to FizzBuzz!"));
+  }
+
+  /** Ensure we can select the to do list manager program */
+  @Test
+  public void testMain7() {
+    String output = runWithInput("4\n5\n1\n5\n");
+    assertTrue(output.contains("Running To Do List..."));
+    assertTrue(output.contains("Welcome to the To Do list program!"));
   }
 }
